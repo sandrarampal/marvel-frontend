@@ -1,0 +1,55 @@
+.chara-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chara-image {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  bottom: 150px;
+}
+
+.chara-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 40px 20px black;
+}
+
+.name-circle {
+  position: relative;
+  z-index: 1;
+  border: 10px white solid;
+  background-color: orange;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -300px;
+  left: -160px;
+}
+
+.name-circle h2 {
+  font-family: "Bangers", system-ui;
+  font-size: 30px;
+}
+
+.comic-carrousel {
+  display: flex;
+  overflow: scroll;
+
+  margin-bottom: 50px;
+  gap: 10px;
+}
+
+.one-comic-list {
+  flex-shrink: 0;
+}
+
+.one-comic-list img {
+  height: 400px;
+}

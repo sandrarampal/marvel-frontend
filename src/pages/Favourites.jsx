@@ -9,7 +9,7 @@ const Favourites = ({ token }) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/user/favourites/characters",
+        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/characters",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -17,7 +17,7 @@ const Favourites = ({ token }) => {
         }
       );
       const response2 = await axios.get(
-        "http://localhost:3000/user/favourites/comics",
+        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/comics",
         {
           headers: {
             authorization: `Bearer ${token}`,

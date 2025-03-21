@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  align-items: center;
+  background-color: black;
+}
+
+.navigation {
+  display: flex;
+  /* border: 1px solid black; */
+  width: 78%;
+  justify-content: space-around;
+}
+
+.nav-categories {
+  display: flex;
+  gap: 40px;
+}

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Character.css";
 
 const Character = () => {
   const [data, setData] = useState(null);
@@ -12,10 +13,12 @@ const Character = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/character/" + params.id
+        "https://site--marvel-backend--96jcjn4jx467.code.run/character/" +
+          params.id
       );
       const response2 = await axios.get(
-        "http://localhost:3000/comics/" + params.id
+        "https://site--marvel-backend--96jcjn4jx467.code.run/comics/" +
+          params.id
       );
 
       setData(response.data);
@@ -33,20 +36,21 @@ const Character = () => {
     <p>Chargement</p>
   ) : (
     <section>
-      <div>
-        <p>{data.name}</p>
-        <div>
+      <div className="chara-main container">
+        <div className="name-circle">
+          <h2>{data.name}</h2>
+        </div>
+        <div className="chara-image">
           <img
             src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
             alt=""
           />
         </div>
-        <p>{data.description}</p>
-
-        <div>
+        -<p>{data.description}</p>
+        <div className="comic-carrousel container">
           {dataComics.map((comic, index) => {
             return (
-              <div key={comic._id}>
+              <div className="one-comic-list" key={comic._id}>
                 <img
                   src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                   alt=""

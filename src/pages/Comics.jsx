@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Characters.css";
+import { Pagination } from "@mui/material";
 
 const Comics = ({ token }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [added, setAdded] = useState("");
 
   const fetchData = async () => {
     try {
@@ -23,7 +25,7 @@ const Comics = ({ token }) => {
         }
       }
       const response = await axios.get(
-        "http://localhost:3000/comics" + filters
+        "https://site--marvel-backend--96jcjn4jx467.code.run/comics" + filters
       );
 
       setData(response.data);
@@ -35,6 +37,10 @@ const Comics = ({ token }) => {
   useEffect(() => {
     fetchData();
   }, [page, search]);
+
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   return isLoading ? (
     <p>Chargement</p>
@@ -64,22 +70,30 @@ const Comics = ({ token }) => {
               <button
                 onClick={async () => {
                   const response = await axios.post(
-                    "http://localhost:3000/user/favourites/comics",
+                    "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/comics",
 
                     {
                       token: token,
                       favouriteId: comic._id,
                     }
                   );
+                  setAdded(comic._id);
                 }}
               >
                 Like
               </button>
+              {added === comic._id && <span>Added to your favourites</span>}
             </div>
           );
         })}
       </div>
-      <button
+      <Pagination
+        count={Math.ceil(data.count / 100)}
+        page={page}
+        onChange={handleChange}
+      />
+      ;
+      {/* <button
         onClick={() => {
           setPage(page - 1);
         }}
@@ -92,7 +106,7 @@ const Comics = ({ token }) => {
         }}
       >
         Next page
-      </button>
+      </button> */}
     </section>
   );
 };

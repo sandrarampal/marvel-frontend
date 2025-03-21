@@ -3,12 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Characters.css";
 import Cookies from "js-cookie";
+import { Pagination } from "@mui/material";
 
 const Characters = ({ token }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [added, setAdded] = useState("");
 
   const fetchData = async () => {
     try {
@@ -25,7 +27,8 @@ const Characters = ({ token }) => {
         }
       }
       const response = await axios.get(
-        "http://localhost:3000/characters" + filters
+        "https://site--marvel-backend--96jcjn4jx467.code.run/characters" +
+          filters
       );
       // setPage(pageOn.slice(6));
 
@@ -39,10 +42,14 @@ const Characters = ({ token }) => {
     fetchData();
   }, [page, search]);
 
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
   const handleFaves = async (event) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/favourites",
+        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites",
         {
           token: token,
           favouriteId: character._id,
@@ -56,9 +63,11 @@ const Characters = ({ token }) => {
   return isLoading ? (
     <p>Chargement</p>
   ) : (
-    <section>
-      <div>
+    <section className="container">
+      <div className="character-input">
+        <label htmlFor="search">Recherchez</label>
         <input
+          id="search"
           type="text"
           onChange={() => {
             const value = event.target.value;
@@ -73,45 +82,45 @@ const Characters = ({ token }) => {
 
           return (
             <div className="one-character" key={character._id}>
-              <Link to={`/character/${character._id}`}>
+              <Link to={`/character/${character._id}`} className="links">
                 <p>{character.name}</p>
                 <div className="character-image">
                   <img src={imagePath} alt="" />
                 </div>
                 <p>{character.description}</p>
               </Link>
-              <button
-                onClick={async () => {
-                  const response = await axios.post(
-                    "http://localhost:3000/user/favourites/characters",
 
-                    {
-                      token: token,
-                      favouriteId: character._id,
+              {token && (
+                <button
+                  onClick={async () => {
+                    try {
+                      const response = await axios.post(
+                        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/characters",
+
+                        {
+                          token: token,
+                          favouriteId: character._id,
+                        }
+                      );
+                      setAdded(character._id);
+                    } catch (error) {
+                      console.log(error.response);
                     }
-                  );
-                }}
-              >
-                Like
-              </button>
+                  }}
+                >
+                  Like
+                </button>
+              )}
+              {added === character._id && <span>Added to your favourites</span>}
             </div>
           );
         })}
       </div>
-      <button
-        onClick={() => {
-          setPage(page - 1);
-        }}
-      >
-        Prev page
-      </button>
-      <button
-        onClick={() => {
-          setPage(page + 1);
-        }}
-      >
-        Next page
-      </button>
+      <Pagination
+        count={Math.ceil(data.count / 100)}
+        page={page}
+        onChange={handleChange}
+      />
     </section>
   );
 };

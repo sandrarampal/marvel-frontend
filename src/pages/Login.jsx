@@ -3,11 +3,14 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -24,10 +27,13 @@ const Login = ({ setToken }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/user/login", {
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://site--marvel-backend--96jcjn4jx467.code.run/user/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
 
       Cookies.set("userToken", response.data.token);
       setToken(response.data.token);

@@ -23,3 +23,23 @@ section {
   width: 100%;
   object-fit: cover;
 }
+
+.character-input {
+  margin: 30px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  font-size: 23px;
+}
+
+.character-input input {
+  width: 70%;
+  height: 50px;
+  font-size: 23px;
+}
+
+.links {
+  text-decoration: none;
+}
