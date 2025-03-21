@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Characters.css";
 import Cookies from "js-cookie";
 
-const Characters = ({ favourite, setFavourite }) => {
+const Characters = ({ token }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -39,6 +39,20 @@ const Characters = ({ favourite, setFavourite }) => {
     fetchData();
   }, [page, search]);
 
+  const handleFaves = async (event) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/user/favourites",
+        {
+          token: token,
+          favouriteId: character._id,
+        }
+      );
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   return isLoading ? (
     <p>Chargement</p>
   ) : (
@@ -67,18 +81,15 @@ const Characters = ({ favourite, setFavourite }) => {
                 <p>{character.description}</p>
               </Link>
               <button
-                onClick={() => {
-                  //copier le tab favourite dans lequel on push les favoris
-                  const copyFav = [...favourite];
-                  copyFav.push(character._id);
-                  setFavourite(copyFav);
-                  console.log(favourite);
+                onClick={async () => {
+                  const response = await axios.post(
+                    "http://localhost:3000/user/favourites/characters",
 
-                  // //stringify le tableau
-                  let favStr = JSON.stringify(favourite);
-                  Cookies.set("favourite", favStr);
-
-                  //envoyer la string formée dans un cookie favourite
+                    {
+                      token: token,
+                      favouriteId: character._id,
+                    }
+                  );
                 }}
               >
                 Like

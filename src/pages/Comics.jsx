@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./Characters.css";
 
-const Comics = () => {
+const Comics = ({ token }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -54,10 +55,26 @@ const Comics = () => {
           const imagePath = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
           return (
             <div className="one-character" key={comic._id}>
-              <p>{comic.title}</p>
-              <div className="character-image">
-                <img src={imagePath} alt="" />
-              </div>
+              <Link to={`/comic/${comic._id}`}>
+                <p>{comic.title}</p>
+                <div className="character-image">
+                  <img src={imagePath} alt="" />
+                </div>
+              </Link>
+              <button
+                onClick={async () => {
+                  const response = await axios.post(
+                    "http://localhost:3000/user/favourites/comics",
+
+                    {
+                      token: token,
+                      favouriteId: comic._id,
+                    }
+                  );
+                }}
+              >
+                Like
+              </button>
             </div>
           );
         })}
