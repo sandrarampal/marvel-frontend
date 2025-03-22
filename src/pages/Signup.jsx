@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Button from "../components/Button";
+import "./Signup.css";
 
 const Signup = ({ setToken }) => {
   const [username, setUsername] = useState("");
@@ -49,39 +51,58 @@ const Signup = ({ setToken }) => {
       }
     } catch (error) {
       console.log(error.response);
+      if (error.response.status === 409) {
+        setExist(true);
+      }
     }
   };
 
   return (
-    <div className="login-page">
-      <form onSubmit={handleSubmit}>
-        <h3>S'inscrire</h3>
-        <input
-          type="text"
-          placeholder="Nom d'utilisateur"
-          onChange={handleUsernameChange}
-          value={username}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleEmailChange}
-          value={email}
-        />
-        {exist && <p className="error">Cet email a déjà un compte chez nous</p>}
-        <input
-          type="password"
-          placeholder="Mot de passe"
-          onChange={handlePasswordChange}
-          value={password}
-        />
-        <button type="submit">S'inscrire</button>
-        <Link to="/login" className="link-to">
-          Tu as déjà un compte? Connecte-toi !
-        </Link>
-      </form>
-    </div>
+    <section>
+      <div className="login-page">
+        <form onSubmit={handleSubmit}>
+          <h3>S'inscrire</h3>
+          <div>
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              placeholder="Username"
+              onChange={handleUsernameChange}
+              value={username}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleEmailChange}
+              value={email}
+            />
+          </div>
+          {exist && (
+            <p className="error">Cet email a déjà un compte chez nous</p>
+          )}
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              onChange={handlePasswordChange}
+              value={password}
+            />
+          </div>
+          <Button text="Sign Up" />
+          <Link to="/login" className="link-to">
+            Already signed up? Log in now !
+          </Link>
+        </form>
+      </div>
+    </section>
   );
 };
 

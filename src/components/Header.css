@@ -1,17 +1,72 @@
 header {
-  display: flex;
-  align-items: center;
   background-color: black;
+  height: 80px;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  height: 60px;
+  width: 100%;
+}
+
+.logo img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .navigation {
   display: flex;
   /* border: 1px solid black; */
   width: 78%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .nav-categories {
   display: flex;
   gap: 40px;
+}
+
+.nav-account div {
+  display: flex;
+  gap: 30px;
+}
+
+.css-button-retro--red {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: "Bangers", system-ui;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border: 1px solid #585858;
+  color: #fff;
+  background: transparent;
+  z-index: 0;
+}
+.css-button-retro--red:hover:after {
+  top: 0;
+  left: 0;
+}
+.css-button-retro--red:after {
+  content: "";
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 5px;
+  left: 5px;
+  transition: 0.2s;
+  background-color: #ed171e;
 }

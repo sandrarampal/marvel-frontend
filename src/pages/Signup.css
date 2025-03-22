@@ -1,0 +1,36 @@
+.login-page {
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  padding-top: 120px;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+form > div {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.login-page input {
+  height: 40px;
+  width: 300px;
+  font-size: 18px;
+}
+
+input {
+  outline: none;
+}
+
+.login-page label {
+  font-size: 20px;
+}
+
+.link-to {
+  color: white;
+  font-family: Comic Neue, sans-serif;
+}

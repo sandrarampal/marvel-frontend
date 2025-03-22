@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./Characters.css";
+import "./Comics.css";
 import { Pagination } from "@mui/material";
+import { FcLike } from "react-icons/fc";
 
 const Comics = ({ token }) => {
   const [data, setData] = useState(null);
@@ -46,67 +47,68 @@ const Comics = ({ token }) => {
     <p>Chargement</p>
   ) : (
     <section>
-      <div>
-        <input
-          type="text"
-          onChange={() => {
-            const value = event.target.value;
-            setSearch(value);
-          }}
-          value={search}
-        />
-      </div>
-      <div className="all-characters">
-        {data.results.map((comic, index) => {
-          const imagePath = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
-          return (
-            <div className="one-character" key={comic._id}>
-              <Link to={`/comic/${comic._id}`}>
-                <p>{comic.title}</p>
-                <div className="character-image">
-                  <img src={imagePath} alt="" />
-                </div>
-              </Link>
-              <button
-                onClick={async () => {
-                  const response = await axios.post(
-                    "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/comics",
+      <div className="container">
+        <div className="comic-input">
+          <label htmlFor="">Search</label>
+          <input
+            type="text"
+            placeholder="Type Comic title here"
+            onChange={() => {
+              const value = event.target.value;
+              setSearch(value);
+            }}
+            value={search}
+          />
+        </div>
+        <div className="all-comics">
+          {data.results.map((comic, index) => {
+            const imagePath = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+            return (
+              <div className="one-comic" key={comic._id}>
+                <Link className="links" to={`/comic/${comic._id}`}>
+                  <div className="comic-title">
+                    <span>{comic.title}</span>
+                  </div>
+                  <div className="card">
+                    <div className="card-inner">
+                      <div className="comic-image">
+                        <img src={imagePath} alt="" />
+                      </div>
+                      <div className="description-comic">
+                        <p>{comic.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
 
-                    {
-                      token: token,
-                      favouriteId: comic._id,
-                    }
-                  );
-                  setAdded(comic._id);
-                }}
-              >
-                Like
-              </button>
-              {added === comic._id && <span>Added to your favourites</span>}
-            </div>
-          );
-        })}
+                <FcLike
+                  className="like-icon"
+                  onClick={async () => {
+                    const response = await axios.post(
+                      "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/comics",
+
+                      {
+                        token: token,
+                        favouriteId: comic._id,
+                      }
+                    );
+                    setAdded(comic._id);
+                  }}
+                />
+
+                {added === comic._id && <span>Added to your favourites</span>}
+              </div>
+            );
+          })}
+        </div>
+        <div className="pages">
+          <Pagination
+            count={Math.ceil(data.count / 100)}
+            page={page}
+            onChange={handleChange}
+          />
+        </div>
       </div>
-      <Pagination
-        count={Math.ceil(data.count / 100)}
-        page={page}
-        onChange={handleChange}
-      />
-      ;
-      {/* <button
-        onClick={() => {
-          setPage(page - 1);
-        }}
-      >
-        Prev page
-      </button>
-      <button
-        onClick={() => {
-          setPage(page + 1);
-        }}
-      >
-        Next page
-      </button> */}
     </section>
   );
 };

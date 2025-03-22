@@ -29,7 +29,7 @@ const Comic = () => {
   ) : (
     <section>
       <div>
-        <p>{data.name}</p>
+        <p>{data.title}</p>
         <div>
           <img
             src={`${data.thumbnail.path}.${data.thumbnail.extension}`}

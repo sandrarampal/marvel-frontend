@@ -29,6 +29,9 @@ function App() {
         <Route path="/signup" element={<Signup setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
       </Routes>
+      <footer>
+        <div></div>
+      </footer>
     </Router>
   );
 }

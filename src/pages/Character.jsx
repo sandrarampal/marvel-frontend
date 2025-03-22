@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Character.css";
+import { Link } from "react-router-dom";
 
 const Character = () => {
   const [data, setData] = useState(null);
@@ -37,25 +38,28 @@ const Character = () => {
   ) : (
     <section>
       <div className="chara-main container">
-        <div className="name-circle">
-          <h2>{data.name}</h2>
+        <div>
+          <div className="chara-image">
+            <img
+              src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+              alt=""
+            />
+          </div>
+          <div className="name-circle">
+            <h2>{data.name}</h2>
+          </div>
         </div>
-        <div className="chara-image">
-          <img
-            src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-            alt=""
-          />
-        </div>
-        -<p>{data.description}</p>
+
         <div className="comic-carrousel container">
-          {dataComics.map((comic, index) => {
+          {dataComics.map((comic) => {
             return (
               <div className="one-comic-list" key={comic._id}>
-                <img
-                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                  alt=""
-                />
-                <p>{comic.title}</p>
+                <Link to={`/comic/${comic._id}`}>
+                  <img
+                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                    alt="couverture du comic"
+                  />
+                </Link>
               </div>
             );
           })}
