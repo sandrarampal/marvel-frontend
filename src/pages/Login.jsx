@@ -3,7 +3,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import Button from "../components/Button";
 import "./Signup.css";
 
@@ -11,8 +10,6 @@ const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -39,16 +36,10 @@ const Login = ({ setToken }) => {
 
       Cookies.set("userToken", response.data.token);
       setToken(response.data.token);
-      //   if (location.state) {
-      //     navigate(location.state.from, {
-      //       state: { title: title, price: price },
-      //     });
-      //   } else {
       navigate("/");
     } catch (error) {
-      console.log(error.response);
       if (error.response.status === 401) {
-        setError("Mot de Passe ou Email incorrect");
+        setError("Email or password incorrect");
       }
     }
   };

@@ -14,27 +14,22 @@ const Comics = ({ token }) => {
   const [added, setAdded] = useState("");
 
   const fetchData = async () => {
-    try {
-      let filters = "";
-      if (page) {
-        filters += "?page=" + page;
-      }
-      if (search) {
-        if (filters) {
-          filters += "&title=" + search;
-        } else {
-          filters += "?title=" + search;
-        }
-      }
-      const response = await axios.get(
-        "https://site--marvel-backend--96jcjn4jx467.code.run/comics" + filters
-      );
-
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response);
+    let filters = "";
+    if (page) {
+      filters += "?page=" + page;
     }
+    if (search) {
+      if (filters) {
+        filters += "&title=" + search;
+      } else {
+        filters += "?title=" + search;
+      }
+    }
+    const response = await axios.get(
+      "https://site--marvel-backend--96jcjn4jx467.code.run/comics" + filters
+    );
+    setData(response.data);
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchData();
@@ -48,7 +43,7 @@ const Comics = ({ token }) => {
     <p>Chargement</p>
   ) : (
     <section>
-      <div className="container">
+      <div className="container comics-main">
         <div className="comic-input">
           <div>
             <label htmlFor="">Search</label>
@@ -100,7 +95,9 @@ const Comics = ({ token }) => {
                   }}
                 />
 
-                {added === comic._id && <span>Added to your favourites</span>}
+                {added === comic._id && (
+                  <span className="faves">Added to your favourites</span>
+                )}
               </div>
             );
           })}

@@ -14,30 +14,24 @@ const Characters = ({ token }) => {
   const [added, setAdded] = useState("");
 
   const fetchData = async () => {
-    try {
-      let filters = "";
-      if (page) {
-        filters += "?page=" + page;
-      }
-
-      if (search) {
-        if (filters) {
-          filters += "&name=" + search;
-        } else {
-          filters += "?name=" + search;
-        }
-      }
-      const response = await axios.get(
-        "https://site--marvel-backend--96jcjn4jx467.code.run/characters" +
-          filters
-      );
-      // setPage(pageOn.slice(6));
-
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response);
+    let filters = "";
+    if (page) {
+      filters += "?page=" + page;
     }
+
+    if (search) {
+      if (filters) {
+        filters += "&name=" + search;
+      } else {
+        filters += "?name=" + search;
+      }
+    }
+    const response = await axios.get(
+      "https://site--marvel-backend--96jcjn4jx467.code.run/characters" + filters
+    );
+
+    setData(response.data);
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchData();
@@ -45,20 +39,6 @@ const Characters = ({ token }) => {
 
   const handleChange = (event, value) => {
     setPage(value);
-  };
-
-  const handleFaves = async (event) => {
-    try {
-      const response = await axios.post(
-        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites",
-        {
-          token: token,
-          favouriteId: character._id,
-        }
-      );
-    } catch (error) {
-      console.log(error.response);
-    }
   };
 
   return isLoading ? (
@@ -121,19 +101,15 @@ const Characters = ({ token }) => {
                   <FcLike
                     className="like-icon"
                     onClick={async () => {
-                      try {
-                        const response = await axios.post(
-                          "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/characters",
+                      const response = await axios.post(
+                        "https://site--marvel-backend--96jcjn4jx467.code.run/user/favourites/characters",
 
-                          {
-                            token: token,
-                            favouriteId: character._id,
-                          }
-                        );
-                        setAdded(character._id);
-                      } catch (error) {
-                        console.log(error.response);
-                      }
+                        {
+                          token: token,
+                          favouriteId: character._id,
+                        }
+                      );
+                      setAdded(character._id);
                     }}
                   />
                 )}

@@ -38,8 +38,6 @@ const Signup = ({ setToken }) => {
           password: password,
         }
       );
-      console.log(response.data);
-
       Cookies.set("userToken", response.data.token);
       setToken(response.data.token);
       if (location.state) {
@@ -50,7 +48,6 @@ const Signup = ({ setToken }) => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error.response);
       if (error.response.status === 409) {
         setExist(true);
       }

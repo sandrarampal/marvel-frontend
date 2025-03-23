@@ -26,6 +26,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  border: 2px black solid;
 }
 .asterisk {
   background-color: white;
@@ -69,10 +70,6 @@ section {
 
 .chibipool {
   width: 90px;
-}
-
-.pool-image {
-  width: 30px;
 }
 
 .popup {

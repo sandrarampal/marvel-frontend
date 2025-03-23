@@ -10,16 +10,12 @@ const Comic = () => {
   const params = useParams();
 
   const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://site--marvel-backend--96jcjn4jx467.code.run/comic/" + params.id
-      );
+    const response = await axios.get(
+      "https://site--marvel-backend--96jcjn4jx467.code.run/comic/" + params.id
+    );
 
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response);
-    }
+    setData(response.data);
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchData();

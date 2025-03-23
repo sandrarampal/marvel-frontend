@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Comics from "./pages/Comics";
 import Characters from "./pages/Characters";
 import Header from "./components/Header";
@@ -8,10 +8,9 @@ import Character from "./pages/Character";
 import Comic from "./pages/Comic";
 import Cookies from "js-cookie";
 import Favourites from "./pages/Favourites";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import axios from "axios";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
