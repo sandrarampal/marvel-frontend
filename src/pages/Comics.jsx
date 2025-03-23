@@ -5,6 +5,9 @@ import "./Comics.css";
 import { Pagination } from "@mui/material";
 import { FcLike } from "react-icons/fc";
 import Deadpool from "../components/Deadpool";
+import Loading from "../components/Loading";
+
+// Default values shown
 
 const Comics = ({ token }) => {
   const [data, setData] = useState(null);
@@ -40,7 +43,7 @@ const Comics = ({ token }) => {
   };
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : (
     <section>
       <div className="container comics-main">

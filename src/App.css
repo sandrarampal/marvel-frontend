@@ -15,6 +15,14 @@ body {
   height: 100%;
 }
 
+.load {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   max-width: 1224px;
   margin: 0 auto;

@@ -2,6 +2,7 @@ import axios from "axios";
 import "./Favourites.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const Favourites = ({ token }) => {
   const [data, setData] = useState(null);
@@ -38,7 +39,7 @@ const Favourites = ({ token }) => {
   }, []);
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : (
     <section>
       <div className="faves-main container">

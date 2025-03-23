@@ -5,6 +5,7 @@ import "./Characters.css";
 import { Pagination } from "@mui/material";
 import { FcLike } from "react-icons/fc";
 import Deadpool from "../components/Deadpool";
+import Loading from "../components/Loading";
 
 const Characters = ({ token }) => {
   const [data, setData] = useState(null);
@@ -42,7 +43,7 @@ const Characters = ({ token }) => {
   };
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : (
     <section>
       <div className="container">

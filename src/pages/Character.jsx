@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Character.css";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const Character = () => {
   const [data, setData] = useState(null);
@@ -34,7 +35,7 @@ const Character = () => {
   }, []);
 
   return isLoading ? (
-    <p>Chargement</p>
+    <Loading />
   ) : (
     <section>
       <div className="first-div container">
