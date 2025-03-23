@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Comic.css";
 
 const Comic = () => {
   const [data, setData] = useState(null);
@@ -28,15 +29,21 @@ const Comic = () => {
     <p>Chargement</p>
   ) : (
     <section>
-      <div>
-        <p>{data.title}</p>
-        <div>
-          <img
-            src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-            alt=""
-          />
+      <div className="first-div container">
+        <div className="comic-main">
+          <div className="comic-pic">
+            <img
+              src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+              alt=""
+            />
+          </div>
+          <div className="comic-details">
+            <p>{data.title}</p>
+            <div className="comic-description">
+              <p>{data.description}</p>
+            </div>
+          </div>
         </div>
-        <p>{data.description}</p>
       </div>
     </section>
   );

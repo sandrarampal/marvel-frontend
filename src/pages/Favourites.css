@@ -1,0 +1,68 @@
+.faves-main {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 970px;
+}
+
+.all-faves {
+  width: 97%;
+  border: black solid 2px;
+  background-color: white;
+  background-image: url("../assets/img/background.jpeg");
+  background-size: cover;
+}
+
+.all-faves h3 {
+  font-family: "Bangers", sans-serif;
+  font-size: 34px;
+  color: white;
+  padding: 20px 0px 0px 25px;
+  /* border: red solid 2px; */
+}
+
+.all-characters-faves {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow: scroll;
+}
+
+.character-pic {
+  height: 350px;
+  width: 300px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  background-color: white;
+  border: 2px black solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.character-pic img {
+  height: 93%;
+  width: 90%;
+  border: black 2px solid;
+  object-fit: cover;
+
+  transition: all 0.3s ease;
+}
+
+.name-tag {
+  position: absolute;
+  background-color: white;
+  border: black 2px solid;
+  font-family: "Bangers", sans-serif;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 86%;
+  text-align: center;
+  bottom: 40px;
+}

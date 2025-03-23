@@ -31,18 +31,17 @@ section {
   background-color: black;
 }
 
-.background img {
+.background > img {
   width: 100%;
   height: calc(100vh - 80px);
-
   object-fit: cover;
   border: 10px white solid;
 }
 
 .deadpool {
   position: absolute;
-  width: 26%;
-  top: 225px;
+  width: 400px;
+  top: 110px;
   left: 300px;
   z-index: 1;
   height: 400px;

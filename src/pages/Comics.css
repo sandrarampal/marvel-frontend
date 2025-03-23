@@ -9,13 +9,11 @@
 
 .one-comic {
   width: 23%;
-
-  /* border: 4px solid black; */
-  background-image: url("../assets/img/background.jpeg");
-  background-size: cover;
+  background-color: black;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 10px;
   position: relative;
 }
@@ -138,7 +136,8 @@ label {
 }
 
 .description-comic {
-  background: black;
+  background-image: url("../assets/img/background-card.jpeg");
+  background-size: cover;
   border-radius: 0px;
   padding: 20px 10px 10px 10px;
   overflow: scroll;

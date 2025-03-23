@@ -89,15 +89,30 @@ const Characters = ({ token }) => {
                   <div className="character-name">
                     <span>{character.name}</span>
                   </div>
-                  <div className="character-image">
-                    <img src={imagePath} alt="" />
+                  <div className="card">
+                    {" "}
+                    <div className="card-inner">
+                      <div className="character-image">
+                        <img
+                          src={imagePath}
+                          alt="picture of the character"
+                          className={
+                            imagePath ===
+                            "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg"
+                              ? "no-image"
+                              : ""
+                          }
+                        />
+                      </div>
+
+                      <div className="description-div">
+                        <div>
+                          <p>{character.description}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </Link>
-                {character.description && (
-                  <div className="description-div">
-                    <p>{character.description}</p>
-                  </div>
-                )}
 
                 {token && (
                   <FcLike

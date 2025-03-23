@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import Button from "../components/Button";
 import "./Signup.css";
 
 const Login = ({ setToken }) => {
@@ -80,7 +81,7 @@ const Login = ({ setToken }) => {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <button>Se connecter</button>
+          <Button text="Login" />
           <Link to="/signup" className="link-to">
             <p>No account yet? Sign up now !</p>
           </Link>

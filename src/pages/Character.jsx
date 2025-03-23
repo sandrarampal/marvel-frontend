@@ -37,32 +37,34 @@ const Character = () => {
     <p>Chargement</p>
   ) : (
     <section>
-      <div className="chara-main container">
-        <div>
-          <div className="chara-image">
-            <img
-              src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-              alt=""
-            />
+      <div className="first-div container">
+        <div className="chara-main ">
+          <div>
+            <div className="chara-image">
+              <img
+                src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+                alt=""
+              />
+            </div>
+            <div className="name-circle">
+              <h2>{data.name}</h2>
+            </div>
           </div>
-          <div className="name-circle">
-            <h2>{data.name}</h2>
-          </div>
-        </div>
 
-        <div className="comic-carrousel container">
-          {dataComics.map((comic) => {
-            return (
-              <div className="one-comic-list" key={comic._id}>
-                <Link to={`/comic/${comic._id}`}>
-                  <img
-                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                    alt="couverture du comic"
-                  />
-                </Link>
-              </div>
-            );
-          })}
+          <div className="comic-carrousel container">
+            {dataComics.map((comic) => {
+              return (
+                <div className="one-comic-list" key={comic._id}>
+                  <Link to={`/comic/${comic._id}`}>
+                    <img
+                      src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                      alt="couverture du comic"
+                    />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,50 @@
+.comic-main {
+  height: calc(100vh - 100px);
+  width: 1204px;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-around;
+  background-color: lightgray;
+  border: black 2px solid;
+  background-image: url("../assets/img/background.jpeg");
+  background-size: cover;
+}
+
+.first-div {
+  height: calc(100vh - 80px);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comic-pic {
+  height: 100%;
+}
+
+.comic-pic img {
+  height: 100%;
+}
+
+.comic-details {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 30px;
+}
+
+.comic-details > p {
+  font-family: "Bangers", sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.comic-description {
+  background-color: white;
+  margin-bottom: 250px;
+  border: black 2px solid;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Comic Neue, sans-serif;
+}
