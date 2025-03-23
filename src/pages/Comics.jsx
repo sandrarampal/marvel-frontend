@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Comics.css";
 import { Pagination } from "@mui/material";
 import { FcLike } from "react-icons/fc";
+import Deadpool from "../components/Deadpool";
 
 const Comics = ({ token }) => {
   const [data, setData] = useState(null);
@@ -49,16 +50,19 @@ const Comics = ({ token }) => {
     <section>
       <div className="container">
         <div className="comic-input">
-          <label htmlFor="">Search</label>
-          <input
-            type="text"
-            placeholder="Type Comic title here"
-            onChange={() => {
-              const value = event.target.value;
-              setSearch(value);
-            }}
-            value={search}
-          />
+          <div>
+            <label htmlFor="">Search</label>
+            <input
+              type="text"
+              placeholder="Type Comic title here"
+              onChange={() => {
+                const value = event.target.value;
+                setSearch(value);
+              }}
+              value={search}
+            />
+          </div>
+          <Deadpool text="You know who has the best comics, come on, it starts with a D" />
         </div>
         <div className="all-comics">
           {data.results.map((comic, index) => {

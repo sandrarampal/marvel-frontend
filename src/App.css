@@ -67,6 +67,30 @@ section {
   width: 100%;
 }
 
+.chibipool {
+  width: 90px;
+}
+
+.pool-image {
+  width: 30px;
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deadpool-message {
+  background-color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: relative;
+  bottom: 40px;
+  width: 40%;
+}
+
 .speech-bubble {
   --arrow-w: 0.5em;
   --arrow-h: 1em;

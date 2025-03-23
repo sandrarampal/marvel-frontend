@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./Favourites.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Favourites = ({ token }) => {
   const [data, setData] = useState(null);
@@ -48,15 +49,17 @@ const Favourites = ({ token }) => {
               data.map((character, index) => {
                 return (
                   <div key={character._id}>
-                    <div className="character-pic">
-                      <img
-                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                        alt=""
-                      />
-                      <div className="name-tag">
-                        <p>{character.name}</p>
+                    <Link to={`/character/${character._id}`} className="link">
+                      <div className="character-pic">
+                        <img
+                          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                          alt="picture of the character"
+                        />
+                        <div className="name-tag">
+                          <p>{character.name}</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 );
               })}
@@ -68,15 +71,17 @@ const Favourites = ({ token }) => {
                 dataComics.map((comic, index) => {
                   return (
                     <div key={comic._id}>
-                      <div className="character-pic">
-                        <img
-                          src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                          alt=""
-                        />
-                        <div className="name-tag">
-                          <p>{comic.title}</p>
+                      <Link to={`/comic/${comic._id}`} className="link">
+                        <div className="character-pic">
+                          <img
+                            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                            alt="cover of the comic book"
+                          />
+                          <div className="name-tag">
+                            <p>{comic.title}</p>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   );
                 })}

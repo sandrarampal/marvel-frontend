@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Characters.css";
-import Cookies from "js-cookie";
 import { Pagination } from "@mui/material";
 import { FcLike } from "react-icons/fc";
+import Deadpool from "../components/Deadpool";
 
 const Characters = ({ token }) => {
   const [data, setData] = useState(null);
@@ -67,17 +67,20 @@ const Characters = ({ token }) => {
     <section>
       <div className="container">
         <div className="character-input">
-          <label htmlFor="search">Search</label>
-          <input
-            id="search"
-            type="text"
-            placeholder="Type Character name here"
-            onChange={() => {
-              const value = event.target.value;
-              setSearch(value);
-            }}
-            value={search}
-          />
+          <div>
+            <label htmlFor="search">Search</label>
+            <input
+              id="search"
+              type="text"
+              placeholder="Type Character name here"
+              onChange={() => {
+                const value = event.target.value;
+                setSearch(value);
+              }}
+              value={search}
+            />
+          </div>
+          <Deadpool text="None of those losers are any fun, but I am! You know my name !" />
         </div>
         <div className="all-characters container">
           {data.results.map((character, index) => {

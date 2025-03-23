@@ -34,14 +34,16 @@ const Comic = () => {
           <div className="comic-pic">
             <img
               src={`${data.thumbnail.path}.${data.thumbnail.extension}`}
-              alt=""
+              alt="comic cover"
             />
           </div>
           <div className="comic-details">
             <p>{data.title}</p>
-            <div className="comic-description">
-              <p>{data.description}</p>
-            </div>
+            {data.description && (
+              <div className="comic-description">
+                <p>{data.description}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

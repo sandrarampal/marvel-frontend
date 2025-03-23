@@ -22,6 +22,10 @@
   /* border: red solid 2px; */
 }
 
+.link {
+  color: black;
+}
+
 .all-characters-faves {
   height: 100%;
   width: 100%;

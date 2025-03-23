@@ -63,7 +63,6 @@ section {
   width: 90%;
   border: black 2px solid;
   object-fit: cover;
-
   transition: all 0.3s ease;
 }
 
@@ -85,13 +84,19 @@ label {
 }
 
 .character-input {
-  padding: 30px 0px;
+  justify-content: flex-start;
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  font-size: 23px;
+}
+
+.character-input > div:first-child {
+  display: flex;
   align-items: center;
   gap: 30px;
-  font-size: 23px;
+  width: 45%;
 }
 
 .character-input input {
@@ -173,6 +178,17 @@ label {
 
   .all-characters {
     justify-content: center;
+  }
+
+  .character-input {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .character-input > div:first-child {
+    width: 80%;
   }
 }
 
