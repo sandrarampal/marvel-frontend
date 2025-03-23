@@ -145,3 +145,18 @@ label {
   font-family: Comic Neue, sans-serif;
   transform: rotateY(180deg);
 }
+
+@media (max-width: 1100px) {
+  .one-comic {
+    width: 40%;
+  }
+  .all-comics {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .one-comic {
+    width: 60%;
+  }
+}

@@ -10,14 +10,20 @@ const Home = () => {
         <div className="deadpool">
           <img src={deadpool} alt="" />
           <Bubble
-            className="speech-bubble l"
-            text=" OH HELLO! WELCOME TO MY MARVEL DATABASE!"
+            className="speech-bubble l bubble1"
+            text=" OH HELLO! WELCOME TO THE MARVEL DATABASE!"
+          />
+          <Bubble
+            className="speech-bubble d"
+            text=" OH HELLO! WELCOME TO THE MARVEL DATABASE!"
           />
           <Bubble
             className="speech-bubble l bubble2"
-            text="Someone made a user database to avoid dealing with JSON.Stringify so
-          you can just sign up if you click up there."
+            text="You can sign up* and choose your favourite hero (me) and comics (mine)"
           />
+          <div className="asterisk">
+            <span>* No cookies were harmed in the making of this website</span>
+          </div>
         </div>
       </div>
     </section>

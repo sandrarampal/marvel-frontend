@@ -14,22 +14,28 @@ const Header = ({ setToken, token }) => {
           </div>
         </Link>
         <div className="navigation">
-          <div className="nav-categories">
-            <Link to="/characters">
-              <Button text="Characters" />
-            </Link>
-            <Link to="/comics">
-              <Button text="Comics" />
-            </Link>
-            {token && (
-              <Link to="/favourites">
-                <Button text="Favourites" />
+          <div className="dropdown">
+            <button className="css-button-retro--red menu">Go to</button>
+            <div className="nav-categories">
+              <Link to="/characters">
+                <Button text="Characters" />
               </Link>
-            )}
+              <Link to="/comics">
+                <Button text="Comics" />
+              </Link>
+              {token && (
+                <Link to="/favourites">
+                  <Button text="Favourites" />
+                </Link>
+              )}
+            </div>
           </div>
           <div className="nav-account">
             {!token && (
-              <div>
+              <button className="css-button-retro--red menu">Account</button>
+            )}
+            {!token && (
+              <div className="account-buttons">
                 <Link to="/login">
                   <Button text="Login" />
                 </Link>

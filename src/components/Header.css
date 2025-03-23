@@ -1,6 +1,8 @@
 header {
   background-color: black;
   height: 80px;
+  padding-bottom: 50px;
+  padding-top: 50px;
 }
 
 .header-main {
@@ -10,9 +12,12 @@ header {
   height: 100%;
 }
 
+.dropdown > button {
+  display: none;
+}
+
 .logo {
-  height: 60px;
-  width: 100%;
+  width: 200px;
 }
 
 .logo img {
@@ -32,9 +37,13 @@ header {
   gap: 40px;
 }
 
-.nav-account div {
+.account-buttons {
   display: flex;
   gap: 30px;
+}
+
+.nav-account .menu {
+  display: none;
 }
 
 .css-button-retro--red {
@@ -69,4 +78,79 @@ header {
   left: 5px;
   transition: 0.2s;
   background-color: #ed171e;
+}
+
+@media (max-width: 898px) {
+  .logo {
+    padding: 4px;
+  }
+
+  .navigation {
+    justify-content: space-around;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .nav-account {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .account-buttons {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .nav-categories {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .nav-categories .css-button-retro--red {
+    border: none;
+    transition: none;
+    top: 0;
+    left: 0;
+    background-color: black;
+  }
+
+  .nav-account .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .account-buttons .css-button-retro--red::after {
+    transition: none;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: #ed171e;
+  }
+
+  .nav-categories .css-button-retro--red::after {
+    transition: none;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: #ed171e;
+  }
+
+  .nav-account:hover .account-buttons {
+    display: block;
+  }
+  .dropdown:hover .nav-categories {
+    display: block;
+  }
 }
