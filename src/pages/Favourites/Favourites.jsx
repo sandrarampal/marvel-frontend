@@ -2,7 +2,8 @@ import axios from "axios";
 import "./Favourites.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
+import FavouriteCard from "../../components/FavouriteCard";
 
 const Favourites = ({ token }) => {
   const [data, setData] = useState(null);
@@ -48,21 +49,7 @@ const Favourites = ({ token }) => {
           <div className="all-characters-faves">
             {data &&
               data.map((character, index) => {
-                return (
-                  <div key={character._id}>
-                    <Link to={`/character/${character._id}`} className="link">
-                      <div className="character-pic">
-                        <img
-                          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                          alt="picture of the character"
-                        />
-                        <div className="name-tag">
-                          <p>{character.name}</p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                );
+                return <FavouriteCard character={character} />;
               })}
           </div>
           <div>

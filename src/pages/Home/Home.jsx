@@ -1,6 +1,6 @@
-import background from "../assets/img/background.jpeg";
-import deadpool from "../assets/img/deadpool.png";
-import Bubble from "../components/Bubble";
+import background from "../../assets/img/background.jpeg";
+import deadpool from "../../assets/img/deadpool.png";
+import Bubble from "../../components/Bubble";
 
 const Home = () => {
   return (

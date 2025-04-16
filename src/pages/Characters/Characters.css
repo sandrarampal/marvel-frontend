@@ -163,8 +163,12 @@ label {
   overflow: scroll;
   color: white;
   font-family: Comic Neue, sans-serif;
-  background-image: url("../assets/img/background-card.jpeg");
+  background-image: url("../../assets/img/background-card.jpeg");
   background-size: cover;
+}
+
+.description-div div::-webkit-scrollbar {
+  display: none;
 }
 
 .description-div p {

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import "./Signup.css";
 
 const Signup = ({ setToken }) => {

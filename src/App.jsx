@@ -1,16 +1,16 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Comics from "./pages/Comics";
-import Characters from "./pages/Characters";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Character from "./pages/Character";
-import Comic from "./pages/Comic";
+import Comics from "./pages/Comics/Comics";
+import Characters from "./pages/Characters/Characters";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home/Home";
+import Character from "./pages/Character/Character";
+import Comic from "./pages/Comic/Comic";
 import Cookies from "js-cookie";
-import Favourites from "./pages/Favourites";
+import Favourites from "./pages/Favourites/Favourites";
 import { useState } from "react";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);

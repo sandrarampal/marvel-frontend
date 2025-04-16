@@ -1,8 +1,8 @@
-import logo from "../assets/img/logo-marvel.png";
+import logo from "../../assets/img/logo-marvel.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import "./Header.css";
-import Button from "./Button";
+import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 
 const Header = ({ setToken, token }) => {

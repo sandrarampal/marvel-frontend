@@ -1,6 +1,6 @@
 import Bubble from "./Bubble";
 import chibipool from "../assets/img/chibi-deadpool.png";
-import "../pages/Comics.css";
+import "../pages/Comics/Comics.css";
 
 const Deadpool = (props) => {
   return (

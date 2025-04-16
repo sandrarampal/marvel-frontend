@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
 import axios from "axios";
 import "./Comic.css";
 

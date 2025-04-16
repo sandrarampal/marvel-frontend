@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import "./Comics.css";
 import { Pagination } from "@mui/material";
 import { FcLike } from "react-icons/fc";
-import Deadpool from "../components/Deadpool";
-import Loading from "../components/Loading";
+import { IoMdHeartDislike } from "react-icons/io";
+import Deadpool from "../../components/Deadpool";
+import Loading from "../../components/Loading";
 
 // Default values shown
 

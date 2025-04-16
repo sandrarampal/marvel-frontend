@@ -3,8 +3,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
-import "./Signup.css";
+import Button from "../../components/Button";
+import "../Signup/Signup.css";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
